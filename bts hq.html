@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BTS HQ: Manager & Lore Portal</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'dark-base': '#0F0E17',
+            'bts-purple': '#9D4EDD',
+            'hyyh-rose': '#E8AFA8',
+            'glass-navy': '#1B1B2F',
+            'glass-border': '#3A3A5E',
+            'text-primary': '#FFFFF0',
+            'text-secondary': '#A0A0B2',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0F0E17;
+      color: #FFFFF0;
+      font-family: system-ui, -apple-system, sans-serif;
+      position: relative;
+    }
+
+    .glass-panel {
+      background: rgba(27, 27, 47, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(58, 58, 94, 0.5);
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+
+  <div class="relative z-10">
+
+    <!-- BARRA SUPERIOR DE NAVEGACIÓN -->
+    <header class="sticky top-0 z-50 px-6 py-4 flex flex-col md:flex-row justify-between items-center glass-panel border-b border-glass-border">
+      <div class="flex items-center space-x-3 mb-3 md:mb-0">
+        <span class="text-xl font-extrabold tracking-wider text-bts-purple border-2 border-bts-purple px-2 py-0.5 rounded">
+          BTS HQ
+        </span>
+        <span class="text-xs uppercase tracking-widest text-text-secondary border-l border-glass-border pl-3">
+          Manager Portal
+        </span>
+      </div>
+
+      <!-- Pestañas de Navegación -->
+      <nav class="flex flex-wrap gap-2">
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-bts-purple text-text-primary shadow-[0_0_15px_rgba(157,78,221,0.5)]">
+          Inicio
+        </button>
+        <button onclick="switchTab('timeline')" id="nav-timeline" class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all text-text-secondary hover:text-text-primary hover:bg-glass-navy">
+          Timeline
+        </button>
+        <button onclick="switchTab('expedientes')" id="nav-expedientes" class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all text-text-secondary hover:text-text-primary hover:bg-glass-navy">
+          Expedientes
+        </button>
+        <button onclick="switchTab('bt21')" id="nav-bt21" class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all text-text-secondary hover:text-text-primary hover:bg-glass-navy">
+          BT21 Universe
+        </button>
+      </nav>
+
+      <!-- Reloj KST -->
+      <div class="mt-3 md:mt-0 text-xs font-mono text-hyyh-rose flex items-center space-x-2">
+        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+        <span id="kst-clock">SEOUL (KST): 00:00:00</span>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-6xl mx-auto px-4 py-8">
+
+      <!-- VISTA 1: INICIO / DASHBOARD -->
+      <section id="view-dashboard" class="tab-content space-y-6">
+        <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-bts-purple/10 rounded-full blur-3xl pointer-events-none"></div>
+          <h1 class="text-3xl font-extrabold tracking-tight">Panel Ejecutivo de Control</h1>
+          <p class="text-text-secondary mt-2 max-w-2xl text-sm leading-relaxed">
+            Bienvenido, Manager. Explora el recorrido histórico en vivo del grupo mediante las imágenes oficiales de las giras e integraciones directas a sus conciertos en YouTube.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-4">
+            <button onclick="switchTab('timeline')" class="bg-bts-purple hover:bg-bts-purple/80 text-text-primary px-5 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-[0_0_15px_rgba(157,78,221,0.4)]">
+              Explorar Timeline
+            </button>
+            <button onclick="switchTab('expedientes')" class="glass-panel hover:bg-glass-navy text-text-primary px-5 py-2.5 rounded-lg font-semibold text-sm border border-glass-border transition-all">
+              Ver Expedientes de Miembros
+            </button>
+          </div>
+        </div>
+
+        <!-- GALERÍA DE CONCIERTOS -->
+        <div class="space-y-4">
+          <div class="flex justify-between items-center">
+            <h2 class="text-xl font-bold text-bts-purple">Recorrido Musical & Escenarios Históricos</h2>
+            <span class="text-xs font-mono text-hyyh-rose">GALERÍA EN VIVO</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- TARJETA 1: WEMBLEY STADIUM -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-glass-border flex flex-col group hover:border-bts-purple transition-all">
+              <div class="relative h-60 overflow-hidden bg-gray-900">
+                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1000&q=80" alt="Speak Yourself Wembley Stadium" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-base via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 bg-bts-purple/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  LOVE YOURSELF: SPEAK YOURSELF
+                </span>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-lg font-bold text-text-primary">BTS - Live at Wembley Stadium</h3>
+                  <p class="text-xs text-text-secondary mt-1 leading-relaxed">
+                    Presentación histórica en Londres (01/06/2019). BTS haciendo historia como el primer grupo coreano en agotar dos fechas consecutivas en el Estadio Wembley.
+                  </p>
+                </div>
+                <a href="https://www.youtube.com/watch?v=qFDTm_TBAcg" target="_blank" rel="noopener noreferrer" class="mt-5 w-full bg-bts-purple hover:bg-bts-purple/80 text-text-primary border border-bts-purple py-2.5 px-4 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-[0_0_12px_rgba(157,78,221,0.4)]">
+                  <span>▶ Ver Concierto en YouTube</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- TARJETA 2: PERMISSION TO DANCE ON STAGE -->
+            <div class="glass-panel rounded-xl overflow-hidden border border-glass-border flex flex-col group hover:border-bts-purple transition-all">
+              <div class="relative h-60 overflow-hidden bg-gray-900">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1000&q=80" alt="Permission to Dance On Stage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-base via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 bg-hyyh-rose/90 text-dark-base text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-md">
+                  PTD ON STAGE
+                </span>
+              </div>
+              <div class="p-5 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-lg font-bold text-text-primary">BTS - PERMISSION TO DANCE ON STAGE</h3>
+                  <p class="text-xs text-text-secondary mt-1 leading-relaxed">
+                    Concierto completo y gira masiva presencial realizada en recintos icónicos como SoFi Stadium (LA), Seúl y Allegiant Stadium (Las Vegas).
+                  </p>
+                </div>
+                <a href="https://www.youtube.com/watch?v=CBUZFQ1BR6I" target="_blank" rel="noopener noreferrer" class="mt-5 w-full bg-bts-purple hover:bg-bts-purple/80 text-text-primary border border-bts-purple py-2.5 px-4 rounded-lg text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-[0_0_12px_rgba(157,78,221,0.4)]">
+                  <span>▶ Ver Concierto en YouTube</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- VISTA 2: TIMELINE (RESTAURADA CON TODA LA INFORMACIÓN Y LORE) -->
+      <section id="view-timeline" class="tab-content hidden space-y-6">
+        <div class="flex flex-col items-center my-4">
+          <div class="glass-panel p-1 rounded-full flex space-x-2 border border-glass-border">
+            <button id="toggle-real" onclick="setTimelineMode('real')" class="px-6 py-2 rounded-full text-sm font-semibold transition-all bg-bts-purple text-text-primary shadow-[0_0_12px_rgba(157,78,221,0.6)]">
+              Historia Real & Giras
+            </button>
+            <button id="toggle-bu" onclick="setTimelineMode('bu')" class="px-6 py-2 rounded-full text-sm font-semibold transition-all text-text-secondary hover:text-text-primary">
+              BTS Universe / BU (Lore)
+            </button>
+          </div>
+        </div>
+
+        <div id="timeline-container" class="relative border-l-2 border-bts-purple/40 ml-4 md:ml-32 space-y-8 my-8 pl-6">
+          <!-- Renderizado dinámico -->
+        </div>
+      </section>
+
+      <!-- VISTA 3: EXPEDIENTES OFICIALES (RESTAURADA CON TODA LA INFORMACIÓN TÉCNICA) -->
+      <section id="view-expedientes" class="tab-content hidden space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-glass-border pb-4">
+          <div>
+            <h2 class="text-2xl font-bold text-bts-purple">Expedientes Oficiales del Personal</h2>
+            <p class="text-xs text-text-secondary mt-1">Fichas técnicas, perfiles ejecutivos y detalles completos de cada integrante.</p>
+          </div>
+        </div>
+
+        <div id="members-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <!-- Renderizado dinámico -->
+        </div>
+      </section>
+
+      <!-- VISTA 4: SECCIÓN INDEPENDIENTE BT21 UNIVERSE -->
+      <section id="view-bt21" class="tab-content hidden space-y-6">
+        <div class="border-b border-glass-border pb-4">
+          <h2 class="text-2xl font-bold text-bts-purple">BT21 Universe</h2>
+          <p class="text-xs text-text-secondary mt-1">Personajes animados creados por BTS en colaboración con LINE FRIENDS.</p>
+        </div>
+
+        <div id="bt21-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <!-- Renderizado dinámico -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- MODAL DE EXPEDIENTE MIEMBRO -->
+    <div id="modal-expediente" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+      <div class="glass-panel max-w-lg w-full rounded-2xl border border-glass-border p-6 relative">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-text-secondary hover:text-text-primary text-xl font-bold p-2">✕</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // DATOS COMPLETOS DE LÍNEA DE TIEMPO (RESTAURADOS)
+    const timelineData = {
+      real: [
+        {
+          year: '2013',
+          title: 'Debut Oficial: 2 Cool 4 Skool',
+          desc: 'BTS debuta con su sencillo principal "No More Dream", marcando el inicio de la era de la trilogía escolar y estableciendo su mensaje crítico social.'
+        },
+        {
+          year: '2015',
+          title: 'Era HYYH (The Most Beautiful Moment in Life)',
+          desc: 'Lanzamiento de HYYH Pt.1 y Pt.2. Primer victoria en programas musicales con "I NEED U". Transición a un sonido más introspectivo e inicio de su ascenso internacional.'
+        },
+        {
+          year: '2017',
+          title: 'Apertura en el Mercado Global & Billboard',
+          desc: 'Lanzamiento de "LOVE YOURSELF 承 Her". BTS se convierte en el primer grupo K-Pop en ganar un Billboard Music Award (Top Social Artist) y actuar en los AMAs.'
+        },
+        {
+          year: '2018 - 2019',
+          title: 'Love Yourself: Speak Yourself World Tour',
+          desc: 'Gira histórica por estadios mundiales como Wembley Stadium (Londres) y Rose Bowl (LA). Discurso histórico en la Asamblea General de la ONU.'
+        },
+        {
+          year: '2020',
+          title: 'Hito Histórico: #1 en Billboard Hot 100 con Dynamite',
+          desc: 'Lanzamiento de "Dynamite", su primer sencillo completamente en inglés. BTS consigue el puesto #1 en la lista Hot 100 de Billboard y obtiene su primera nominación al Grammy.'
+        },
+        {
+          year: '2021 - 2022',
+          title: 'PERMISSION TO DANCE ON STAGE & Concerts',
+          desc: 'Serie masiva de conciertos presenciales en el SoFi Stadium de Los Ángeles, Seúl y Allegiant Stadium de Las Vegas, reuniendo a cientos de miles de fans.'
+        }
+      ],
+      bu: [
+        {
+          year: '11 de Abril (Año 22)',
+          title: 'El Bucle Temporal de Seokjin',
+          desc: 'Seokjin regresa a Corea y comienza la repetición del bucle temporal para intentar salvar a los otros 6 miembros de sus trágicos destinos.'
+        },
+        {
+          year: 'HYYH Era',
+          title: 'The Most Beautiful Moment in Life (BU)',
+          desc: 'La juventud, el dolor y la camaradería. Revelación de las historias entrelazadas de los 7 personajes a través de videos musicales, los libros "The Notes" y el webtoon "Save Me".'
+        },
+        {
+          year: 'WINGS Era',
+          title: 'Tensión, Tentación y Dualidad (Demian)',
+          desc: 'Inspirado en la obra de Hermann Hesse. Los personajes enfrentan la pérdida de la inocencia, la tentación y la búsqueda de su verdadera identidad.'
+        },
+        {
+          year: 'Love Yourself Era',
+          title: 'Aceptar la Verdad y la Máscara (Smeraldo)',
+          desc: 'Simbolizado por la flor Smeraldo y "The Truth Untold". Los personajes intentan ocultar sus imperfecciones bajo máscaras antes de aprender a amarse a sí mismos.'
+        }
+      ]
+    };
+
+    // EXPEDIENTES DETALLADOS COMPLETOS (RESTAURADOS)
+    const membersData = [
+      { 
+        id: 'rm', 
+        stageName: 'RM', 
+        realName: 'Kim Nam-joon', 
+        role: 'Líder, Rapero Principal', 
+        status: 'Activo en HQ', 
+        details: 'Líder y portavoz del grupo. Productor ejecutivo y compositor principal en más de 200 canciones registradas. Lideró los discursos históricos en la ONU.',
+        color: 'border-purple-500' 
+      },
+      { 
+        id: 'jin', 
+        stageName: 'Jin', 
+        realName: 'Kim Seok-jin', 
+        role: 'Vocalista, Visual', 
+        status: 'Activo en HQ', 
+        details: 'Miembro mayor del grupo, destacado por su tono vocal falsete distintivo y rango tenor. Compositor de solos aclamados como "Epiphany" y "The Astronaut".',
+        color: 'border-pink-400' 
+      },
+      { 
+        id: 'suga', 
+        stageName: 'SUGA', 
+        realName: 'Min Yoon-gi', 
+        role: 'Rapero Lead, Productor', 
+        status: 'Activo en HQ', 
+        details: 'Productor de renombre internacional (bajo el alias Agust D). Clave en la composición lírica y musical del grupo con un estilo de rap veloz e introspectivo.',
+        color: 'border-blue-400' 
+      },
+      { 
+        id: 'jhope', 
+        stageName: 'j-hope', 
+        realName: 'Jung Ho-seok', 
+        role: 'Bailarín Principal, Rapero', 
+        status: 'Activo en HQ', 
+        details: 'Capitán de baile y director escénico de las presentaciones en vivo. Solista pionero en encabezar festivales masivos globales como Lollapalooza.',
+        color: 'border-yellow-400' 
+      },
+      { 
+        id: 'jimin', 
+        stageName: 'Jimin', 
+        realName: 'Park Ji-min', 
+        role: 'Bailarín Principal, Vocalista Lead', 
+        status: 'Activo en HQ', 
+        details: 'Formado en danza contemporánea. Destaca por su técnica de baile expresiva y su rango vocal agudo. Primer solista coreano en alcanzar el #1 del Billboard Hot 100.',
+        color: 'border-indigo-400' 
+      },
+      { 
+        id: 'v', 
+        stageName: 'V', 
+        realName: 'Kim Tae-hyung', 
+        role: 'Vocalista, Visual', 
+        status: 'Activo en HQ', 
+        details: 'Poseedor de un distintivo registro barítono cálido y profundo. Aclamado por su dirección artística, presencia escénica y afición por el jazz y R&B.',
+        color: 'border-green-400' 
+      },
+      { 
+        id: 'jk', 
+        stageName: 'Jung Kook', 
+        realName: 'Jeon Jung-kook', 
+        role: 'Vocalista Principal, Centro, Maknae', 
+        status: 'Activo en HQ', 
+        details: 'El "Golden Maknae". Centro de las coreografías y pilar vocal principal en los directos. Interpretó el tema oficial de la Copa Mundial de la FIFA 2022.',
+        color: 'border-red-400' 
+      }
+    ];
+
+    // PERSONAJES DE BT21
+    const bt21Data = [
+      { character: 'KOYA', creator: 'RM', desc: 'Koala inteligente y pensador apasionado por la música.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=KOYA' },
+      { character: 'RJ', creator: 'Jin', desc: 'Alpaca esponjosa y amable a la que le encanta comer.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=RJ' },
+      { character: 'SHOOKY', creator: 'SUGA', desc: 'Galleta traviesa con miedo a la leche.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=SHOOKY' },
+      { character: 'MANG', creator: 'j-hope', desc: 'Pony enmascarado apasionado por el baile.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=MANG' },
+      { character: 'CHIMMY', creator: 'Jimin', desc: 'Cachorro amarillo dedicado y trabajador.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=CHIMMY' },
+      { character: 'TATA', creator: 'V', desc: 'Príncipe alienígena transformable con cabeza de corazón.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=TATA' },
+      { character: 'COOKY', creator: 'Jung Kook', desc: 'Conejo rosa rudo con grandes sueños de volverse fuerte.', avatar: 'https://api.dicebear.com/7.x/bottts/svg?seed=COOKY' }
+    ];
+
+    let activeTimelineMode = 'real';
+
+    // RELOJ KST EN TIEMPO REAL
+    function updateKSTClock() {
+      const now = new Date();
+      const options = { timeZone: 'Asia/Seoul', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+      document.getElementById('kst-clock').innerText = `SEOUL (KST): ${new Intl.DateTimeFormat('es-ES', options).format(now)}`;
+    }
+    setInterval(updateKSTClock, 1000);
+    updateKSTClock();
+
+    // NAVEGACIÓN ENTRE VISTAS
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.className = 'nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all text-text-secondary hover:text-text-primary hover:bg-glass-navy';
+      });
+
+      const activeBtn = document.getElementById(`nav-${tabId}`);
+      activeBtn.className = 'nav-btn px-3 py-1.5 rounded-lg text-sm font-medium transition-all bg-bts-purple text-text-primary shadow-[0_0_15px_rgba(157,78,221,0.5)]';
+    }
+
+    // TIMELINE
+    function setTimelineMode(mode) {
+      activeTimelineMode = mode;
+      const btnReal = document.getElementById('toggle-real');
+      const btnBu = document.getElementById('toggle-bu');
+
+      if (mode === 'real') {
+        btnReal.className = 'px-6 py-2 rounded-full text-sm font-semibold transition-all bg-bts-purple text-text-primary shadow-[0_0_12px_rgba(157,78,221,0.6)]';
+        btnBu.className = 'px-6 py-2 rounded-full text-sm font-semibold transition-all text-text-secondary hover:text-text-primary';
+      } else {
+        btnBu.className = 'px-6 py-2 rounded-full text-sm font-semibold transition-all bg-hyyh-rose text-dark-base shadow-[0_0_12px_rgba(232,175,168,0.6)]';
+        btnReal.className = 'px-6 py-2 rounded-full text-sm font-semibold transition-all text-text-secondary hover:text-text-primary';
+      }
+      renderTimeline();
+    }
+
+    function renderTimeline() {
+      const container = document.getElementById('timeline-container');
+      const data = timelineData[activeTimelineMode];
+      
+      container.innerHTML = data.map(item => `
+        <div class="relative">
+          <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full border-2 ${
+            activeTimelineMode === 'real' ? 'bg-bts-purple border-text-primary' : 'bg-hyyh-rose border-dark-base'
+          }"></div>
+          <div class="glass-panel p-5 rounded-xl border border-glass-border hover:border-bts-purple transition-all">
+            <span class="text-xs font-bold uppercase tracking-widest text-bts-purple">${item.year}</span>
+            <h3 class="text-xl font-bold mt-1 text-text-primary">${item.title}</h3>
+            <p class="text-sm text-text-secondary mt-2 leading-relaxed">${item.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // EXPEDIENTES DE MIEMBROS
+    function renderExpedientes() {
+      const grid = document.getElementById('members-grid');
+      grid.innerHTML = membersData.map(m => `
+        <div onclick="openMemberModal('${m.id}')" class="glass-panel p-5 rounded-xl border-l-4 ${m.color} border-y border-r border-glass-border hover:scale-[1.02] cursor-pointer transition-all group">
+          <div class="flex justify-between items-start">
+            <h3 class="text-xl font-extrabold text-text-primary group-hover:text-bts-purple transition-colors">${m.stageName}</h3>
+            <span class="text-[10px] font-mono bg-bts-purple/20 text-bts-purple px-2 py-0.5 rounded border border-bts-purple/30">VER FICHA</span>
+          </div>
+          <p class="text-xs text-hyyh-rose font-medium mt-1">${m.realName}</p>
+          <p class="text-xs text-text-secondary mt-2">${m.role}</p>
+        </div>
+      `).join('');
+    }
+
+    function openMemberModal(id) {
+      const member = membersData.find(m => m.id === id);
+      if (!member) return;
+
+      document.getElementById('modal-content').innerHTML = `
+        <div class="space-y-4">
+          <div class="border-b border-glass-border pb-3">
+            <span class="text-xs font-mono text-bts-purple uppercase tracking-wider">EXPEDIENTE OFICIAL HQ</span>
+            <h2 class="text-3xl font-black text-text-primary mt-1">${member.stageName}</h2>
+            <p class="text-sm text-hyyh-rose font-semibold">${member.realName}</p>
+          </div>
+          <div class="bg-dark-base p-4 rounded-xl border border-glass-border text-xs space-y-3">
+            <div>
+              <span class="text-text-secondary block font-mono">ROL PRINCIPAL</span>
+              <span class="text-text-primary font-medium mt-0.5 block">${member.role}</span>
+            </div>
+            <div>
+              <span class="text-text-secondary block font-mono">DESCRIPCIÓN Y NOTAS TÉCNICAS</span>
+              <span class="text-text-primary leading-relaxed mt-0.5 block">${member.details}</span>
+            </div>
+            <div>
+              <span class="text-text-secondary block font-mono">ESTADO</span>
+              <span class="text-green-400 font-bold mt-0.5 block">● ${member.status}</span>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('modal-expediente').classList.remove('hidden');
+    }
+
+    // RENDERIZAR BT21 UNIVERSE
+    function renderBT21() {
+      const grid = document.getElementById('bt21-grid');
+      grid.innerHTML = bt21Data.map(b => `
+        <div class="glass-panel p-4 rounded-xl border border-glass-border hover:border-bts-purple transition-all text-center space-y-2">
+          <div class="w-20 h-20 mx-auto bg-dark-base/50 rounded-full p-2 border border-glass-border">
+            <img src="${b.avatar}" alt="${b.character}" class="w-full h-full object-contain">
+          </div>
+          <h4 class="font-bold text-lg text-text-primary">${b.character}</h4>
+          <p class="text-xs text-hyyh-rose font-semibold">Creado por: ${b.creator}</p>
+          <p class="text-xs text-text-secondary leading-relaxed mt-1">${b.desc}</p>
+        </div>
+      `).join('');
+    }
+
+    function closeModal() {
+      document.getElementById('modal-expediente').classList.add('hidden');
+    }
+
+    // INICIALIZACIÓN
+    renderTimeline();
+    renderExpedientes();
+    renderBT21();
+  </script>
+</body>
+</html>
